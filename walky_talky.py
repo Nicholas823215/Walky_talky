@@ -8,13 +8,13 @@ class bothway:
     def __init__(self,id_code):
         self.id_code = str(id_code)
         try:
-            open(self.id_code + "1")
+            with open(self.id_code + "1") as h:
+                pass
             self.id_code += "2"
             print()
         except:
             self.id_code += "1"
-        file = open(self.id_code, "w")
-        file.close()
+        with open(self.id_code, "w"):pass
         tran = True
         if self.id_code[-1] == "1":
             while tran:
@@ -49,7 +49,8 @@ class bothway:
     def write(self, text):
         while True:
             try:
-                open(self.id_code[:-1]+ ("1" if self.id_code[-1] == "2" else "2"))
+                with open(self.id_code[:-1]+ ("1" if self.id_code[-1] == "2" else "2")) as h:
+                    pass
                 self.trasmition_located = True
                 break
             except FileNotFoundError:
